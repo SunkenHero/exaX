@@ -26,7 +26,8 @@ A16       ───┃                ┃───       A20
 A17       ───┃                ┃───       A21
 A18       ───┃                ┃───       A22
 A19       ───┃                ┃───       A23
-N C       ───┃                ┃───       GND
+N C       ───┃                ┃───       RW
+RES       ───┃                ┃───       GND
              ┗━━━━━━━━━━━━━━━━━━┛
 
 ## Pin description
@@ -36,9 +37,11 @@ GND              negative power rail
 INT              cause hardware interrupt
 HLD              pause cpu at current state
 CLK              clock input
+RES              reset cpu
        OUTPUT
 UBS              cpu is using the bus
 COP              cpu is waiting on the coprocessor
+RW               when on write to the address, when off read from the address
        INPUT/OUTPUT
 A0-A23           address bus (normally only used as output)
 D0-D15           data bus
