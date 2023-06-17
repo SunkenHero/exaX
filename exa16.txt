@@ -1,4 +1,47 @@
+# Pinout
+(Pinout may vary a bit from the actual pinout. Please refer to the implementation cpu`s pinout)
 
+Recommended pinout for CPUs:
+             ┏━━━━━━━━━━━━━━━━━━┓
+VCC       ───┃                ┃───       UBS
+INT       ───┃                ┃───       HLD
+CLK       ───┃                ┃───       COP
+A0        ───┃                ┃───       D0
+A1        ───┃                ┃───       D1
+A2        ───┃                ┃───       D2
+A3        ───┃                ┃───       D3
+A4        ───┃                ┃───       D4
+A5        ───┃                ┃───       D5
+A6        ───┃                ┃───       D6
+A7        ───┃                ┃───       D7
+A8        ───┃                ┃───       D8
+A9        ───┃                ┃───       D9
+A10       ───┃                ┃───       D10
+A11       ───┃                ┃───       D11
+A12       ───┃                ┃───       D12
+A13       ───┃                ┃───       D13
+A14       ───┃                ┃───       D14
+A15       ───┃                ┃───       D15
+A16       ───┃                ┃───       A20
+A17       ───┃                ┃───       A21
+A18       ───┃                ┃───       A22
+A19       ───┃                ┃───       A23
+N C       ───┃                ┃───       GND
+             ┗━━━━━━━━━━━━━━━━━━┛
+
+## Pin description
+       INPUT
+VCC              positive power rail
+GND              negative power rail
+INT              cause hardware interrupt
+HLD              pause cpu at current state
+CLK              clock input
+       OUTPUT
+UBS              cpu is using the bus
+COP              cpu is waiting on the coprocessor
+       INPUT/OUTPUT
+A0-A23           address bus (normally only used as output)
+D0-D15           data bus
 
 
 # Fixed memory map
@@ -17,6 +60,8 @@ The interrupt vector map is located at 0x0200 to 0x02FF
 It consists of a list of byte triples: [address lower] [address mid] [address higher]
 Each of these triples is where the interrupt handler for the interrupt with the id ((interrupt handler address - 512) / 3) is located in programm memory
 
+## Hardware Interrupts
+To call a hardware interrupt, set the "INT" pin on the CPU high, and provide the interrupt id on the data bus
 
 
 # Instruction layout
